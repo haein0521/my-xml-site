@@ -6,8 +6,12 @@
         function loadXMLDoc() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    displayXML(this);
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        displayXML(this);
+                    } else {
+                        console.error("Failed to load XML: " + this.status);
+                    }
                 }
             };
             xhttp.open("GET", "books.xml", true);
@@ -16,6 +20,11 @@
 
         function displayXML(xml) {
             var xmlDoc = xml.responseXML;
+            if (!xmlDoc) {
+                console.error("Failed to parse XML");
+                return;
+            }
+
             var table = "<tr><th>Title</th><th>Author</th><th>Genre</th><th>Price</th><th>Publish Date</th><th>Description</th></tr>";
             var books = xmlDoc.getElementsByTagName("book");
             for (var i = 0; i < books.length; i++) {
@@ -36,6 +45,19 @@
             document.getElementById("demo").innerHTML = table;
         }
     </script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body onload="loadXMLDoc()">
     <h1>Book Information</h1>
