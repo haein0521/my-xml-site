@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+    <book id="1">
+        <title>Effective Java</title>
+        <author>Joshua Bloch</author>
+        <genre>Programming</genre>
+        <price>45.00</price>
+        <publish_date>2018-01-06</publish_date>
+        <description>A comprehensive guide to programming in Java.</description>
+    </book>
+    <book id="2">
+        <title>Clean Code</title>
+        <author>Robert C. Martin</author>
+        <genre>Programming</genre>
+        <price>50.00</price>
+        <publish_date>2008-08-01</publish_date>
+        <description>Guide to writing clean, readable, and maintainable code.</description>
+    </book>
+</library>
